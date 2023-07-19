@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/viewPagerFragment">
+
+    <fragment
+        android:id="@+id/toDoFragment"
+        android:name="com.example.taskwise.ui.todoFragment.ToDoFragment"
+        android:label="fragment_todo"
+        tools:layout="@layout/fragment_todo" />
+
+    <fragment
+        android:id="@+id/completedFragment"
+        android:name="com.example.taskwise.ui.completedFragment.CompletedFragment"
+        android:label="fragment_completed"
+        tools:layout="@layout/fragment_completed" />
+
+    <fragment
+        android:id="@+id/overDueFragment"
+        android:name="com.example.taskwise.ui.overDueFragment.OverDueFragment"
+        android:label="fragment_over_due"
+        tools:layout="@layout/fragment_over_due" />
+
+    <fragment
+        android:id="@+id/viewPagerFragment"
+        android:name="com.example.taskwise.ui.viewPagerFragment.ViewPagerFragment"
+        android:label="fragment_view_pager"
+        tools:layout="@layout/fragment_view_pager" />
+
+
+</navigation>
