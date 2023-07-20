@@ -33,21 +33,20 @@ class AddTaskDialog @Inject constructor() : DialogFragment() {
     private var _binding: AddTaskDialogBinding? = null
     private val binding get() = _binding!!
 
-    @SuppressLint("UseSwitchCompatOrMaterialCode")
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = AddTaskDialogBinding.inflate(LayoutInflater.from(context))
+        _binding = AddTaskDialogBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-        dialog!!.window!!.setLayout(
-            ViewGroup.LayoutParams.MATCH_PARENT,
-            ViewGroup.LayoutParams.MATCH_PARENT
-        )
-        dialog!!.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        dialog!!.setCancelable(true)
-        dialog!!.setContentView(R.layout.add_task_dialog)
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
 
         binding.dateOfTaskEditText.setOnClickListener {
             openDatePickerDialog(it, requireActivity())
@@ -84,9 +83,17 @@ class AddTaskDialog @Inject constructor() : DialogFragment() {
 
         dialog!!.show()
 
-        return binding.root
+
     }
 
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+
+    @SuppressLint("UseSwitchCompatOrMaterialCode")
     private fun isDialogEmpty(): Boolean {
         return binding.titleOfTaskEditText.text.isEmpty() ||
                 binding.dateOfTaskEditText.text.isEmpty() ||

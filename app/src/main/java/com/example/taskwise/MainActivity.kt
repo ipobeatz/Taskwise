@@ -43,7 +43,9 @@ class MainActivity : AppCompatActivity(), OnInputListener {
         binding.dateOfDayTextView.text = "$dayName, $month, $year"
 
         binding.addTaskBtn.setOnClickListener {
-            addTaskDialog.show(supportFragmentManager, "tag")
+
+            val addTaskDialog = AddTaskDialog()
+            addTaskDialog.show(supportFragmentManager, "AddTaskDialog")
         }
     }
 
