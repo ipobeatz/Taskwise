@@ -54,7 +54,9 @@ class TodoAdapter @Inject constructor() : RecyclerView.Adapter<TodoAdapter.TodoV
             holder.binding.taskPriority.setBackgroundResource(R.drawable.priority_high)
 
         holder.binding.checkbox.setOnClickListener {
-            listener?.OnCheckBoxClicked(differ.currentList[position], position)
+            if (position < differ.currentList.size) {
+                listener?.OnCheckBoxClicked(differ.currentList[position], position)
+            }
         }
     }
 
@@ -70,9 +72,15 @@ class TodoAdapter @Inject constructor() : RecyclerView.Adapter<TodoAdapter.TodoV
 
         // Tıklanan öğeyle ilgili işlemleri gerçekleştirin.
         // Örneğin, öğeyi listeden kaldırabilir veya diğer güncellemeleri yapabilirsiniz.
+
+
     }
 
     companion object {
         var listener: OnCheckBoxClickListener? = null
+    }
+
+    fun submitData(taskList: List<Task>) {
+        differ.submitList(taskList)
     }
 }

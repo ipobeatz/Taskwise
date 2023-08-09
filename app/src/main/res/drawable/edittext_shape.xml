@@ -9,13 +9,13 @@
         <clip-path android:pathData="M12 0H291C297.627 0 303 5.37258 303 12V44C303 50.6274 297.627 56 291 56H12C5.37258 56 0 50.6274 0 44V12C0 5.37258 5.37258 0 12 0Z" />
 
         <path
-            android:fillColor="#FFFFFF"
+            android:fillColor="#BD5050"
             android:pathData="M0 0V56H303V0" />
 
         <path
             android:pathData="M12 0H291C297.627 0 303 5.37258 303 12V44C303 50.6274 297.627 56 291 56H12C5.37258 56 0 50.6274 0 44V12C0 5.37258 5.37258 0 12 0Z"
-            android:strokeWidth="2"
-            android:strokeColor="#E4DFDF" />
+            android:strokeWidth="5"
+            android:strokeColor="#000000" />
 
     </group>
 
