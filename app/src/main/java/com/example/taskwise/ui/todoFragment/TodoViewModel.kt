@@ -3,6 +3,7 @@ package com.example.taskwise.ui.todoFragment
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.taskwise.data.repository.TaskRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -27,9 +28,15 @@ class TodoViewModel @Inject constructor(application: Application) : AndroidViewM
         }
     }
 
+
+
     fun deleteAllTasks() {
         viewModelScope.launch {
             repository.deleteAllTasks()
+
         }
+
     }
+
+
 }

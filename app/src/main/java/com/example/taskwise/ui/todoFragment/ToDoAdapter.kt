@@ -19,6 +19,7 @@ class TodoAdapter @Inject constructor() : RecyclerView.Adapter<TodoAdapter.TodoV
     inner class TodoViewHolder(val binding: TaskItemBinding) :
         RecyclerView.ViewHolder(binding.root)
 
+
     private val diffCallback = object : DiffUtil.ItemCallback<Task>() {
         override fun areItemsTheSame(oldItem: Task, newItem: Task): Boolean {
             return oldItem.id == newItem.id
@@ -53,7 +54,7 @@ class TodoAdapter @Inject constructor() : RecyclerView.Adapter<TodoAdapter.TodoV
             holder.binding.taskPriority.setBackgroundResource(R.drawable.priority_high)
 
         holder.binding.checkbox.setOnClickListener {
-            listener!!.OnCheckBoxClicked(differ.currentList[position])
+            listener?.OnCheckBoxClicked(differ.currentList[position], position)
         }
     }
 
@@ -65,7 +66,11 @@ class TodoAdapter @Inject constructor() : RecyclerView.Adapter<TodoAdapter.TodoV
         TodoAdapter.listener = listener
     }
 
-    override fun OnCheckBoxClicked(task: Task) {}
+    override fun OnCheckBoxClicked(task: Task, position: Int) {
+
+        // Tıklanan öğeyle ilgili işlemleri gerçekleştirin.
+        // Örneğin, öğeyi listeden kaldırabilir veya diğer güncellemeleri yapabilirsiniz.
+    }
 
     companion object {
         var listener: OnCheckBoxClickListener? = null

@@ -18,13 +18,12 @@ import com.example.taskwise.util.TimeChecker.checkTime
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
-@RequiresApi(Build.VERSION_CODES.O)
 @AndroidEntryPoint
 class ToDoFragment : Fragment() {
 
     private var _binding: FragmentTodoBinding? = null
     private val binding get() = _binding!!
-
+    private var isButtonVisible = true
     @Inject
     lateinit var todoAdapter: TodoAdapter
     private val todoViewModel: TodoViewModel by viewModels()
@@ -38,23 +37,31 @@ class ToDoFragment : Fragment() {
 
         _binding = FragmentTodoBinding.inflate(layoutInflater, container, false)
         return binding.root
+
     }
+
+
+
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         setUpRecyclerView()
 
+
         observeToLiveData()
 
         todoAdapter.setOnCheckBtnClickListener(object : OnCheckBoxClickListener {
-            override fun OnCheckBoxClicked(task: Task) {
+            override fun OnCheckBoxClicked(task: Task, position: Int) {
                 todoViewModel.deleteTask(task)
                 completedTaskViewModel.insertCompletedTask(task)
-                Toast.makeText(context, "Completed ", Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(), "Completed ", Toast.LENGTH_LONG).show()
             }
         })
     }
+
+
 
     private fun setUpRecyclerView() {
         binding.todoRecyclerView.apply {

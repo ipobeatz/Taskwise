@@ -11,7 +11,7 @@
         <path
             android:pathData="M12 0H134C140.627 0 146 5.37258 146 12V37C146 43.6274 140.627 49 134 49H12C5.37258 49 0 43.6274 0 37V12C0 5.37258 5.37258 0 12 0Z"
             android:strokeWidth="2"
-            android:strokeColor="#376EFB" />
+            android:strokeColor="#4F6191" />
 
     </group>
 

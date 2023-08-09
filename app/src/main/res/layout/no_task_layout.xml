@@ -1,52 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background">
 
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="7dp">
-
+        android:id="@+id/noTask"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#DC6859"
+        android:padding="7dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="InvalidId">
 
 
         <pl.droidsonroids.gif.GifImageView
             android:id="@+id/noTaskImageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="336dp"
+            android:layout_height="242dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="48dp"
-            android:src="@drawable/notask" />
+            android:src="@drawable/yoo" />
 
         <TextView
             android:id="@+id/noTaskTextView"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/noTaskImageView"
-            android:layout_alignStart="@+id/noTaskImageView"
-            android:layout_alignEnd="@+id/noTaskImageView"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="0dp"
+            android:layout_centerHorizontal="true"
             android:fontFamily="@font/poppins_semibold"
             android:padding="2dp"
             android:text="@string/no_task_to_do"
-            android:textColor="@color/blue"
+            android:textColor="@color/black"
             android:textSize="24sp" />
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/noTaskTextView"
-            android:layout_alignStart="@+id/noTaskTextView"
-            android:layout_alignEnd="@+id/noTaskImageView"
-            android:layout_marginStart="-48dp"
-            android:layout_marginEnd="-32dp"
+            android:layout_centerHorizontal="true"
             android:fontFamily="@font/poppins_light"
             android:text="@string/tapToAddTask"
-            android:textColor="@color/blue"
+            android:textColor="@color/black"
             android:textSize="14sp" />
 
 

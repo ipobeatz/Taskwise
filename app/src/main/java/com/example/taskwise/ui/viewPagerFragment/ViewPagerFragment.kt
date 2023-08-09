@@ -75,37 +75,28 @@ class ViewPagerFragment : Fragment() {
 
     private fun setTodoBackground() {
         binding.viewPager.setCurrentItem(0, true)
-        binding.todoTab.setBackgroundResource(R.drawable.btn_blue_shape)
         with(binding) {
-            todoTab.setTextColor(requireContext().resources.getColor(R.color.white))
-            completedTab.setBackgroundResource(R.drawable.btn_white_shape)
-            completedTab.setTextColor(requireContext().resources.getColor(R.color.tab_color))
-            overdueTab.setBackgroundResource(R.drawable.btn_white_shape)
-            overdueTab.setTextColor(requireContext().resources.getColor(R.color.tab_color))
+            todoTab.setTextColor(requireContext().resources.getColor(R.color.orange_light))
+            completedTab.setTextColor(requireContext().resources.getColor(R.color.white))
+            overdueTab.setTextColor(requireContext().resources.getColor(R.color.white))
         }
     }
 
     private fun setCompletedBackground() {
         binding.viewPager.setCurrentItem(1, true)
-        binding.completedTab.setBackgroundResource(R.drawable.btn_blue_shape)
         with(binding) {
-            completedTab.setTextColor(requireContext().resources.getColor(R.color.white))
-            todoTab.setBackgroundResource(R.drawable.btn_white_shape)
-            todoTab.setTextColor(R.color.tab_color)
-            overdueTab.setBackgroundResource(R.drawable.btn_white_shape)
-            overdueTab.setTextColor(R.color.tab_color)
+            completedTab.setTextColor(requireContext().resources.getColor(R.color.orange_light))
+            todoTab.setTextColor(requireContext().resources.getColor(R.color.white))
+            overdueTab.setTextColor(requireContext().resources.getColor(R.color.white))
         }
     }
 
     private fun setOverDueBackground() {
         binding.viewPager.setCurrentItem(2, true)
-        binding.overdueTab.setBackgroundResource(R.drawable.btn_blue_shape)
         with(binding) {
-            overdueTab.setTextColor(requireContext().resources.getColor(R.color.white))
-            completedTab.setBackgroundResource(R.drawable.btn_white_shape)
-            completedTab.setTextColor(R.color.tab_color)
-            todoTab.setBackgroundResource(R.drawable.btn_white_shape)
-            todoTab.setTextColor(R.color.tab_color)
+            overdueTab.setTextColor(requireContext().resources.getColor(R.color.orange_light))
+            completedTab.setTextColor(requireContext().resources.getColor(R.color.white))
+            todoTab.setTextColor(requireContext().resources.getColor(R.color.white))
         }
     }
 }

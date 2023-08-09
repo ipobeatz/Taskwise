@@ -44,13 +44,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_alignParentEnd="true"
-                android:layout_margin="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
                 android:button="@drawable/checked"
+                android:checked="true"
                 android:clickable="false"
                 android:focusable="true"
-                android:text=""
                 android:padding="7dp"
-                android:checked="true" />
+                android:text="" />
 
         </RelativeLayout>
 

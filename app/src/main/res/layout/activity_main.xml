@@ -9,7 +9,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#2A2A2A">
 
         <TextView
             android:id="@+id/todolistTextView"
@@ -21,8 +22,8 @@
             android:paddingHorizontal="7dp"
             android:paddingTop="7dp"
             android:text="@string/todo_list"
-            android:textColor="@color/blue"
-            android:textSize="28sp"
+            android:textColor="@color/background"
+            android:textSize="26sp"
             android:textStyle="bold" />
 
         <TextView
@@ -36,7 +37,7 @@
             android:paddingHorizontal="7dp"
             android:paddingBottom="7dp"
             android:text="@string/dateOfDay"
-            android:textColor="#2E3A59"
+            android:textColor="@color/background"
             android:textSize="16sp" />
 
         <androidx.fragment.app.FragmentContainerView
@@ -45,21 +46,25 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/dateOfDayTextView"
+            android:layout_marginTop="-13dp"
             app:defaultNavHost="true"
             app:navGraph="@navigation/nav_graph" />
 
+
         <Button
             android:id="@+id/addTaskBtn"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:layout_alignParentEnd="true"
+            android:layout_width="155dp"
+            android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_marginEnd="40dp"
-            android:layout_marginBottom="40dp"
-            android:background="@drawable/plus_btn"
-            android:text="+"
-            android:textColor="@color/white"
-            android:textSize="28sp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="12dp"
+            android:background="@color/black"
+            android:text="CREATE NEW TASK"
+            android:textColor="@color/background"
+            android:textSize="24sp"
             android:textStyle="bold" />
 
     </RelativeLayout>

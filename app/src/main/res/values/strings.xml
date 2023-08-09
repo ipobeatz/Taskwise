@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Taskwise</string>
-    <string name="todo_list">Pronto Todo List</string>
+    <string name="todo_list">Try not to delay your work</string>
     <string name="dateOfDay">Monday, 25 July, 2022</string>
     <string name="todo">ToDo</string>
     <string name="complete">Complete</string>

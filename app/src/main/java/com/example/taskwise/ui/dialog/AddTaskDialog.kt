@@ -28,7 +28,7 @@ import javax.inject.Inject
 class AddTaskDialog @Inject constructor() : DialogFragment() {
 
     private lateinit var listener: OnInputListener
-    private lateinit var priority: Priority
+    private var priority: Priority = Priority.LOW
 
     private var _binding: AddTaskDialogBinding? = null
     private val binding get() = _binding!!
@@ -47,7 +47,15 @@ class AddTaskDialog @Inject constructor() : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        fun isRadioGroupEmpty(): Boolean {
+            return binding.radioGroup.checkedRadioButtonId == -1
+        }
 
+        binding.radioGroup.setOnCheckedChangeListener { group, checkedId ->
+            if (isRadioGroupEmpty()) {
+                Toast.makeText(context, "Please select an option", Toast.LENGTH_LONG).show()
+            }
+        }
         binding.dateOfTaskEditText.setOnClickListener {
             openDatePickerDialog(it, requireActivity())
         }
@@ -80,7 +88,6 @@ class AddTaskDialog @Inject constructor() : DialogFragment() {
         binding.cancelBtn.setOnClickListener {
             dialog!!.dismiss()
         }
-
         dialog!!.show()
 
 
@@ -97,9 +104,12 @@ class AddTaskDialog @Inject constructor() : DialogFragment() {
     private fun isDialogEmpty(): Boolean {
         return binding.titleOfTaskEditText.text.isEmpty() ||
                 binding.dateOfTaskEditText.text.isEmpty() ||
-                binding.timeOfTaskEditText.text.isEmpty() ||
-                binding.radioGroup.isEmpty()
+                binding.timeOfTaskEditText.text.isEmpty()
+
     }
+    //soruna bak
+
+
 
     override fun onAttach(context: Context) {
         super.onAttach(context)

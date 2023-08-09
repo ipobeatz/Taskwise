@@ -4,9 +4,10 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:minWidth="500dp"
-    android:minHeight="480dp"
+    android:minHeight="380dp"
     android:layout_gravity="center"
-    android:padding="7dp">
+    android:padding="7dp"
+    >
 
 
 
@@ -15,7 +16,8 @@
         android:layout_height="match_parent"
         android:background="@color/white"
         android:padding="14dp"
-        tools:ignore="UseSwitchCompatOrMaterialXml">
+        tools:ignore="UseSwitchCompatOrMaterialXml"
+        android:backgroundTint="#252727">
 
 
         <TextView
@@ -26,7 +28,7 @@
             android:fontFamily="@font/poppins_semibold"
             android:lineHeight="27sp"
             android:text="@string/add_task"
-            android:textColor="@color/blue"
+            android:textColor="@color/background"
             android:textSize="18sp"
             tools:targetApi="p" />
 
@@ -94,7 +96,7 @@
             android:layout_marginStart="0dp"
             android:fontFamily="@font/poppins_semibold"
             android:text="@string/set_priority"
-            android:textColor="@color/blue"
+            android:textColor="@color/background"
             android:textSize="16sp" />
 
         <RadioGroup
@@ -115,6 +117,7 @@
                 android:padding="2dp"
                 android:shadowColor="@color/green_light"
                 android:text="@string/low"
+                android:checked="true"
                 android:textColor="@color/green_light"
                 android:textSize="13sp" />
 
@@ -125,6 +128,7 @@
                 android:layout_marginHorizontal="8dp"
                 android:fontFamily="@font/poppins_semibold"
                 android:padding="2dp"
+                android:checked="false"
                 android:shadowColor="@color/orange_light"
                 android:text="@string/medium"
                 android:textColor="@color/orange_light"
@@ -137,6 +141,7 @@
                 android:layout_marginHorizontal="8dp"
                 android:fontFamily="@font/poppins_semibold"
                 android:padding="2dp"
+                android:checked="false"
                 android:shadowColor="@color/red_light"
                 android:text="@string/high"
                 android:textColor="@color/red_light"
@@ -164,7 +169,7 @@
             android:shadowColor="@color/blue_light"
             android:text="@string/remind_me_for_this_task"
             android:textStyle="bold"
-            android:textColor="@color/blue"
+            android:textColor="@color/background"
             android:textSize="16sp" />
 
         <RelativeLayout
@@ -183,7 +188,7 @@
                 android:background="@drawable/cancel_shape"
                 android:text="@string/cancel"
                 android:textAllCaps="false"
-                android:textColor="@color/blue_light"
+                android:textColor="#919191"
                 android:textSize="16sp" />
 
             <Button

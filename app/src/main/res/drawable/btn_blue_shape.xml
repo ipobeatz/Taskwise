@@ -10,7 +10,7 @@
 
         <path
             android:fillColor="#376EFB"
-            android:pathData="M0 0V45H90V0" />
+            android:pathData="M0 22.5C0 34.9264 10.0736 45 22.5 45H67.5C79.9264 45 90 34.9264 90 22.5C90 10.0736 79.9264 0 67.5 0H22.5C10.0736 0 0 10.0736 0 22.5Z" />
 
     </group>
 
