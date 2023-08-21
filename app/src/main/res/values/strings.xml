@@ -3,6 +3,7 @@
     <string name="todo_list">Try not to delay your work</string>
     <string name="dateOfDay">Monday, 25 July, 2022</string>
     <string name="todo">ToDo</string>
+    <string name="plus">+</string>
     <string name="complete">Complete</string>
     <string name="overdue">Overdue</string>
     <string name="time">10:30 PM</string>

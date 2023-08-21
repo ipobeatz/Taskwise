@@ -5,6 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.taskwise.data.model.Task
 import com.example.taskwise.data.repository.TaskRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -16,7 +17,7 @@ class TodoViewModel @Inject constructor(application: Application) : AndroidViewM
     private val repository: TaskRepository = TaskRepository(application)
     val getAllTasks: LiveData<List<com.example.taskwise.data.model.Task>> = repository.getAllTasks()
 
-    fun insertTask(task: com.example.taskwise.data.model.Task) {
+    fun insertTask(task: Task) {
         viewModelScope.launch {
             repository.insertTask(task)
         }
@@ -27,8 +28,6 @@ class TodoViewModel @Inject constructor(application: Application) : AndroidViewM
             repository.deleteTask(task)
         }
     }
-
-
 
     fun deleteAllTasks() {
         viewModelScope.launch {

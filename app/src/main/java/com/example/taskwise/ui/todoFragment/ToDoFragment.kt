@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.taskwise.R
 import com.example.taskwise.data.model.Task
@@ -44,6 +45,18 @@ class ToDoFragment : Fragment() {
         setUpRecyclerView()
         observeToLiveData()
 
+        binding.todoRecyclerView.scrollToPosition(0) // RecyclerView'ı en üstte başlat
+        // Diğer kodlar...
+
+
+        todoAdapter.setOnCheckBoxClickListener(object : OnCheckBoxClickListener {
+            override fun OnCheckBoxClicked(task: Task, position: Int) {
+                todoViewModel.deleteTask(task)
+                completedTaskViewModel.insertCompletedTask(task)
+                Toast.makeText(requireContext(), "Completed ", Toast.LENGTH_LONG).show()
+            }
+        })
+
 
         todoAdapter.setOnCheckBtnClickListener(object : OnCheckBoxClickListener {
             override fun OnCheckBoxClicked(task: Task, position: Int) {
@@ -55,7 +68,6 @@ class ToDoFragment : Fragment() {
     }
 
 
-
     private fun setupRecyclerView(tasks: List<Task>) {
         todoAdapter.submitData(tasks)
         // RecyclerView diğer yapılandırmaları ve ayarlamaları
@@ -65,6 +77,7 @@ class ToDoFragment : Fragment() {
         binding.todoRecyclerView.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = todoAdapter
+            scrollToPosition(0) // RecyclerView'ı en üstte başlat
         }
     }
 
@@ -75,11 +88,17 @@ class ToDoFragment : Fragment() {
             val filteredTasks = tasks.filter {
                 getDifferentDays(it.date) > 0 || (getDifferentDays(it.date) == 0 && checkTime(it.time))
             }
+
+            val previousItemCount = todoAdapter.itemCount // Önceki öğe sayısını alın
             todoAdapter.submitData(filteredTasks.reversed())
             removeNoTaskLayout(filteredTasks)
+
+            val newItemCount = todoAdapter.itemCount // Yeni öğe sayısını alın
+
+            if (newItemCount > previousItemCount) {
+                binding.todoRecyclerView.scrollToPosition(0)
+            }
         }
-
-
     }
 
     private fun removeNoTaskLayout(tasks: List<Task>?) {
@@ -92,8 +111,9 @@ class ToDoFragment : Fragment() {
         }
     }
 
-
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
-
-
+}

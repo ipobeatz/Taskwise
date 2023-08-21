@@ -7,6 +7,8 @@
     android:background="@color/background"
     tools:context=".MainActivity">
 
+
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -46,26 +48,21 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/dateOfDayTextView"
-            android:layout_marginTop="-13dp"
             app:defaultNavHost="true"
             app:navGraph="@navigation/nav_graph" />
 
-
         <Button
             android:id="@+id/addTaskBtn"
-            android:layout_width="283dp"
-            android:layout_height="30dp"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="12dp"
-            android:layout_marginBottom="42dp"
-            android:background="@drawable/edittext_shape"
-            android:text="CREATE NEW TASK"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/add_button"
+            android:text="+"
             android:textColor="@color/black"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textSize="12sp" />
 
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

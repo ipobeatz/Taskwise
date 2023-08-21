@@ -4,14 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="8dp"
+    android:layout_marginTop="2dp"
     tools:context=".ui.viewPagerFragment.ViewPagerFragment">
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager"
         android:layout_width="0dp"
         android:layout_height="675dp"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -36,7 +35,6 @@
                 android:id="@+id/todoTab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="7dp"
                 android:layout_marginEnd="6dp"
                 android:layout_weight="1"
                 android:backgroundTint="#4F6191"
@@ -47,7 +45,6 @@
                 android:id="@+id/completedTab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="7dp"
                 android:layout_marginEnd="6dp"
                 android:layout_weight="1"
                 android:backgroundTint="#4F6191"
@@ -58,12 +55,11 @@
                 android:id="@+id/overdueTab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="7dp"
                 android:layout_marginEnd="6dp"
                 android:backgroundTint="#4F6191"
                 android:layout_weight="1"
                 android:text="overdue Tab"
-                android:textSize="10dp" />
+                android:textSize="10sp" />
         </LinearLayout>
 
 

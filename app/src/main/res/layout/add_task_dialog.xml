@@ -9,8 +9,6 @@
     android:padding="7dp"
     >
 
-
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -106,6 +104,7 @@
             android:layout_below="@id/setPriorityTextView"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="8dp"
+            android:checkedButton="@id/mediumRadiobtn"
             android:orientation="horizontal">
 
             <RadioButton
@@ -113,11 +112,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="8dp"
+                android:checked="true"
                 android:fontFamily="@font/poppins_semibold"
                 android:padding="2dp"
                 android:shadowColor="@color/green_light"
                 android:text="@string/low"
-                android:checked="true"
                 android:textColor="@color/green_light"
                 android:textSize="13sp" />
 
@@ -126,9 +125,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="8dp"
+                android:checked="false"
                 android:fontFamily="@font/poppins_semibold"
                 android:padding="2dp"
-                android:checked="false"
                 android:shadowColor="@color/orange_light"
                 android:text="@string/medium"
                 android:textColor="@color/orange_light"
@@ -139,9 +138,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="8dp"
+                android:checked="false"
                 android:fontFamily="@font/poppins_semibold"
                 android:padding="2dp"
-                android:checked="false"
                 android:shadowColor="@color/red_light"
                 android:text="@string/high"
                 android:textColor="@color/red_light"

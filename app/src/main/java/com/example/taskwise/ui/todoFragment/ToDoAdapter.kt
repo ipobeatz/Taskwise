@@ -15,10 +15,27 @@ import javax.inject.Inject
 
 class TodoAdapter @Inject constructor() : RecyclerView.Adapter<TodoAdapter.TodoViewHolder>(),
     OnCheckBoxClickListener {
+    private var onCheckBoxClickListener: OnCheckBoxClickListener? = null
+
+    fun setOnCheckBoxClickListener(listener: OnCheckBoxClickListener) {
+        onCheckBoxClickListener = listener
+    }
+
 
     inner class TodoViewHolder(val binding: TaskItemBinding) :
-        RecyclerView.ViewHolder(binding.root)
+        RecyclerView.ViewHolder(binding.root) {
+        init {
 
+            binding.checkbox.setOnClickListener {
+                val position = bindingAdapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    val task = differ.currentList[position]
+                    onCheckBoxClickListener?.OnCheckBoxClicked(task, position)
+                }
+            }
+        }
+
+    }
 
     private val diffCallback = object : DiffUtil.ItemCallback<Task>() {
         override fun areItemsTheSame(oldItem: Task, newItem: Task): Boolean {
@@ -35,6 +52,7 @@ class TodoAdapter @Inject constructor() : RecyclerView.Adapter<TodoAdapter.TodoV
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodoAdapter.TodoViewHolder {
         val view = TaskItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return TodoViewHolder(view)
+
     }
 
     @SuppressLint("SetTextI18n")
@@ -54,10 +72,12 @@ class TodoAdapter @Inject constructor() : RecyclerView.Adapter<TodoAdapter.TodoV
             holder.binding.taskPriority.setBackgroundResource(R.drawable.priority_high)
 
         holder.binding.checkbox.setOnClickListener {
-            if (position < differ.currentList.size) {
+            val position = holder.bindingAdapterPosition
+            if (position != RecyclerView.NO_POSITION && position < differ.currentList.size) {
                 listener?.OnCheckBoxClicked(differ.currentList[position], position)
             }
         }
+        holder.binding.checkbox.isChecked = false
     }
 
     override fun getItemCount(): Int {
@@ -80,7 +100,10 @@ class TodoAdapter @Inject constructor() : RecyclerView.Adapter<TodoAdapter.TodoV
         var listener: OnCheckBoxClickListener? = null
     }
 
-    fun submitData(taskList: List<Task>) {
+    fun submitData(taskList: List<Task>): Int {
+        val previousItemCount = itemCount
         differ.submitList(taskList)
+        val newItemCount = itemCount
+        return newItemCount - previousItemCount
     }
 }
