@@ -68,17 +68,20 @@ class ToDoFragment : Fragment() {
     }
 
 
-    private fun setupRecyclerView(tasks: List<Task>) {
-        todoAdapter.submitData(tasks)
-        // RecyclerView diğer yapılandırmaları ve ayarlamaları
-    }
+
 
     private fun setUpRecyclerView() {
+
         binding.todoRecyclerView.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = todoAdapter
-            scrollToPosition(0) // RecyclerView'ı en üstte başlat
+            addOnLayoutChangeListener { _, _, _, _, _, _, _, _, _ ->
+                // RecyclerView'ın görünümü değiştiğinde, en üste kaydır
+                scrollToPosition(0)
+            }
+
         }
+
     }
 
 

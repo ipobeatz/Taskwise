@@ -19,4 +19,8 @@ class CompletedTaskRepository(application: Application) {
     suspend fun deleteCompletedTask(task: Task) = dao.deleteCompletedTask(task)
 
     suspend fun deleteAllCompletedTasks() = dao.deleteAllCompletedTasks()
+
+    fun getAllCompletedTasksSynchronously(): List<Task> {
+        return dao.getAllCompletedTasksSynchronously()
+    }
 }

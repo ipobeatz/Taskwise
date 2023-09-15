@@ -16,7 +16,6 @@ import com.example.taskwise.util.TimeChecker.checkTime
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
-@RequiresApi(Build.VERSION_CODES.O)
 @AndroidEntryPoint
 class OverDueFragment : Fragment() {
 
@@ -53,13 +52,11 @@ class OverDueFragment : Fragment() {
 
     private fun observeToLiveData() {
         overDueViewModel.getAllTasks.observe(viewLifecycleOwner) { tasks ->
-            overDueAdapter.differ.submitList(
-                tasks.reversed().filter {
-                    getDifferentDays(it.date) < 0 || (getDifferentDays(it.date) == 0 && !checkTime(
-                        it.time
-                    ))
-                }
-            )
+            val overdueTasks = tasks.filter {
+                getDifferentDays(it.date) < 0 || (getDifferentDays(it.date) == 0 && !checkTime(it.time))
+            }
+            overDueAdapter.differ.submitList(overdueTasks)
+
         }
     }
 }

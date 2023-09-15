@@ -15,6 +15,9 @@ interface CompletedTaskDao {
     @Query("SELECT * FROM Tasks")
     fun getAllCompletedTasks(): LiveData<List<Task>>
 
+    @Query("SELECT * FROM Tasks")
+    fun getAllCompletedTasksSynchronously(): List<Task>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertCompletedTask(task: Task)
 

@@ -107,3 +107,5 @@ class TodoAdapter @Inject constructor() : RecyclerView.Adapter<TodoAdapter.TodoV
         return newItemCount - previousItemCount
     }
 }
+
+// TODO: Pagination ekle

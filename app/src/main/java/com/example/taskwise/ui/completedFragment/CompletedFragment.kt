@@ -6,9 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.taskwise.databinding.FragmentCompletedBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -35,7 +38,16 @@ class CompletedFragment : Fragment() {
 
         setUpRecyclerView()
         observeToLiveData()
+/*
+        viewLifecycleOwner.lifecycleScope.launch {
+            completedTaskViewModel.tasks.collectLatest { pagingData ->
+                completedTaskAdapter.submitData(pagingData)
+            }
+        }
+*/
     }
+
+
 
     private fun setUpRecyclerView() {
         binding.completedRecyclerView.apply {
@@ -47,6 +59,12 @@ class CompletedFragment : Fragment() {
     private fun observeToLiveData() {
         completedTaskViewModel.getAllCompletedTasks.observe(viewLifecycleOwner) { completedtasks ->
             completedTaskAdapter.differ.submitList(completedtasks.asReversed())
+
+        }
+        completedTaskViewModel.getAllCompletedTasks.observe(viewLifecycleOwner) { completedtasks ->
+            completedTaskAdapter.differ.submitList(completedtasks.asReversed())
+
         }
     }
+
 }

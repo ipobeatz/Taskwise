@@ -89,7 +89,7 @@ dependencies {
     implementation 'com.jakewharton.threetenabp:threetenabp:1.2.1'
     implementation 'androidx.multidex:multidex:2.0.1'
 
-
+    implementation "androidx.paging:paging-runtime:3.0.1"
     // Test
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation "com.linkedin.dexmaker:dexmaker-mockito:2.28.1"

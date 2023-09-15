@@ -11,7 +11,6 @@ object TimeChecker {
     @SuppressLint("SimpleDateFormat")
     private val hourFormat = SimpleDateFormat("HH:mm")
 
-    @RequiresApi(Build.VERSION_CODES.O)
     fun checkTime(time: String): Boolean {
 
         val currentTime = hourFormat.parse(LocalTime.now().toString())

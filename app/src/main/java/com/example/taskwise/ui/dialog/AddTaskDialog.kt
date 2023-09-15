@@ -21,6 +21,9 @@ import com.example.taskwise.data.model.Priority
 import com.example.taskwise.data.model.Task
 import com.example.taskwise.databinding.AddTaskDialogBinding
 import dagger.hilt.android.AndroidEntryPoint
+import java.time.LocalDate
+import java.time.LocalTime
+import java.time.format.DateTimeFormatter
 import java.util.Calendar
 import javax.inject.Inject
 
@@ -89,12 +92,10 @@ class AddTaskDialog @Inject constructor() : DialogFragment() {
             dialog!!.dismiss()
         }
         dialog!!.show()
-
-
     }
 
 
-    override fun onDestroyView() {
+        override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
@@ -141,8 +142,7 @@ class AddTaskDialog @Inject constructor() : DialogFragment() {
         val currentTime = Calendar.getInstance()
         val hour = currentTime[Calendar.HOUR_OF_DAY]
         val minute = currentTime[Calendar.MINUTE]
-        val timePickerDialog = TimePickerDialog(
-            activity, { timePicker, selectedHour, selectedMinute ->
+        val timePickerDialog = TimePickerDialog(activity, { timePicker, selectedHour, selectedMinute ->
                 val selectedTime = "$selectedHour:$selectedMinute"
                 when (view.id) {
                     R.id.timeOfTaskEditText -> (view as EditText).setText(selectedTime)

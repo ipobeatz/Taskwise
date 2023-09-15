@@ -35,10 +35,8 @@ object DateChecker {
 
         var isEquals = false
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val strDate: Date = sdf.parse(selectedDate) as Date
-            isEquals = Date().after(strDate)
-        }
+        val strDate: Date = sdf.parse(selectedDate) as Date
+        isEquals = Date().after(strDate)
         return !isEquals
     }
 }

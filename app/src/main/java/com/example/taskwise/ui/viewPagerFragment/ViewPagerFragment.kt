@@ -17,7 +17,6 @@ import com.example.taskwise.ui.todoFragment.ToDoFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @SuppressLint("ResourceAsColor")
-@RequiresApi(Build.VERSION_CODES.O)
 @AndroidEntryPoint
 class ViewPagerFragment : Fragment() {
 
