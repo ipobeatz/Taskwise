@@ -31,6 +31,7 @@ class CompletedFragment : Fragment() {
     ): View {
         _binding = FragmentCompletedBinding.inflate(layoutInflater, container, false)
         return binding.root
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -38,16 +39,7 @@ class CompletedFragment : Fragment() {
 
         setUpRecyclerView()
         observeToLiveData()
-/*
-        viewLifecycleOwner.lifecycleScope.launch {
-            completedTaskViewModel.tasks.collectLatest { pagingData ->
-                completedTaskAdapter.submitData(pagingData)
-            }
-        }
-*/
     }
-
-
 
     private fun setUpRecyclerView() {
         binding.completedRecyclerView.apply {

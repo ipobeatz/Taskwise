@@ -36,7 +36,6 @@ class AddTaskDialog @Inject constructor() : DialogFragment() {
     private var _binding: AddTaskDialogBinding? = null
     private val binding get() = _binding!!
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

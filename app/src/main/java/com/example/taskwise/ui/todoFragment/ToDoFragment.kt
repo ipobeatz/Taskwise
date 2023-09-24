@@ -1,20 +1,18 @@
 package com.example.taskwise.ui.todoFragment
 
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.taskwise.R
 import com.example.taskwise.data.model.Task
 import com.example.taskwise.databinding.FragmentTodoBinding
 import com.example.taskwise.ui.completedFragment.CompletedTaskViewModel
+import com.example.taskwise.ui.dialog.AddTaskDialog
 import com.example.taskwise.util.DateChecker.getDifferentDays
 import com.example.taskwise.util.TimeChecker.checkTime
 import dagger.hilt.android.AndroidEntryPoint
@@ -25,69 +23,45 @@ class ToDoFragment : Fragment() {
 
     private var _binding: FragmentTodoBinding? = null
     private val binding get() = _binding!!
-    private var isButtonVisible = true
     private val todoViewModel: TodoViewModel by viewModels()
-    private val completedTaskViewModel: CompletedTaskViewModel by viewModels()
     private val todoAdapter: TodoAdapter by lazy { TodoAdapter() }
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+    private var isDataDeleted = false
 
+    @Inject
+    lateinit var addTaskDialog: AddTaskDialog
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    ): View {
         _binding = FragmentTodoBinding.inflate(layoutInflater, container, false)
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpRecyclerView()
         observeToLiveData()
-
-        binding.todoRecyclerView.scrollToPosition(0) // RecyclerView'ı en üstte başlat
-        // Diğer kodlar...
-
-
-        todoAdapter.setOnCheckBoxClickListener(object : OnCheckBoxClickListener {
-            override fun OnCheckBoxClicked(task: Task, position: Int) {
-                todoViewModel.deleteTask(task)
-                completedTaskViewModel.insertCompletedTask(task)
-                Toast.makeText(requireContext(), "Completed ", Toast.LENGTH_LONG).show()
-            }
-        })
-
+        todoViewModel.getAllTasks()
 
         todoAdapter.setOnCheckBtnClickListener(object : OnCheckBoxClickListener {
             override fun OnCheckBoxClicked(task: Task, position: Int) {
                 todoViewModel.deleteTask(task)
-                completedTaskViewModel.insertCompletedTask(task)
                 Toast.makeText(requireContext(), "Completed ", Toast.LENGTH_LONG).show()
+                isDataDeleted = true
             }
         })
     }
 
-
-
-
     private fun setUpRecyclerView() {
-
         binding.todoRecyclerView.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = todoAdapter
-            addOnLayoutChangeListener { _, _, _, _, _, _, _, _, _ ->
-                // RecyclerView'ın görünümü değiştiğinde, en üste kaydır
-                scrollToPosition(0)
-            }
-
         }
-
     }
 
-
-
     private fun observeToLiveData() {
-        todoViewModel.getAllTasks.observe(viewLifecycleOwner) { tasks ->
+        todoViewModel.getAllTasks().observe(viewLifecycleOwner) { tasks ->
+            println("mcmc getalltasks")
             val filteredTasks = tasks.filter {
                 getDifferentDays(it.date) > 0 || (getDifferentDays(it.date) == 0 && checkTime(it.time))
             }
@@ -97,10 +71,10 @@ class ToDoFragment : Fragment() {
             removeNoTaskLayout(filteredTasks)
 
             val newItemCount = todoAdapter.itemCount // Yeni öğe sayısını alın
+        }
 
-            if (newItemCount > previousItemCount) {
-                binding.todoRecyclerView.scrollToPosition(0)
-            }
+        todoViewModel.inserted.observe(viewLifecycleOwner) {
+            println("mcmc inserted--")
         }
     }
 
@@ -118,5 +92,4 @@ class ToDoFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
 }

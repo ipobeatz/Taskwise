@@ -1,11 +1,9 @@
 package com.example.taskwise.ui.overDueFragment
 
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -24,7 +22,7 @@ class OverDueFragment : Fragment() {
 
     @Inject
     lateinit var overDueAdapter: OverDueAdapter
-    private val overDueViewModel: TodoViewModel by viewModels()
+    //private val overDueViewModel: TodoViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,10 +35,9 @@ class OverDueFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         setUpRecyclerView()
-
         observeToLiveData()
+       // overDueViewModel.getAllTasks()
     }
 
     private fun setUpRecyclerView() {
@@ -51,12 +48,13 @@ class OverDueFragment : Fragment() {
     }
 
     private fun observeToLiveData() {
-        overDueViewModel.getAllTasks.observe(viewLifecycleOwner) { tasks ->
+        /*overDueViewModel.taskData.observe(viewLifecycleOwner) { tasks ->
             val overdueTasks = tasks.filter {
                 getDifferentDays(it.date) < 0 || (getDifferentDays(it.date) == 0 && !checkTime(it.time))
             }
             overDueAdapter.differ.submitList(overdueTasks)
-
         }
+
+         */
     }
 }

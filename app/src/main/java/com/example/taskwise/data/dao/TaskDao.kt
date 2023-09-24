@@ -12,7 +12,7 @@ import com.example.taskwise.data.model.Task
 interface TaskDao {
 
     @Query("SELECT * FROM Tasks")
-    fun getAllTasks(): LiveData<List<Task>>
+    suspend fun getAllTasks(): List<Task>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertTask(task: Task)

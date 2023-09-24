@@ -22,11 +22,6 @@ class CompletedTaskViewModel @Inject constructor(application: Application) :
     private val repository: CompletedTaskRepository = CompletedTaskRepository(application)
     val getAllCompletedTasks: LiveData<List<Task>> = repository.getAllCompletedTasks()
 
-    val tasks: Flow<PagingData<Task>> = Pager(
-        config = PagingConfig(pageSize = 20),
-        pagingSourceFactory = { CompletedTaskPagingSource(repository) }).flow.cachedIn(viewModelScope)
-
-
     fun insertCompletedTask(task: Task) {
         viewModelScope.launch {
             repository.insertCompletedTask(task)

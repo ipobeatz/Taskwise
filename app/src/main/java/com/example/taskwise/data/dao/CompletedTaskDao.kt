@@ -12,7 +12,7 @@ import com.example.taskwise.data.model.Task
 @Dao
 interface CompletedTaskDao {
 
-    @Query("SELECT * FROM Tasks")
+    @Query("SELECT * FROM Tasks LIMIT 20")
     fun getAllCompletedTasks(): LiveData<List<Task>>
 
     @Query("SELECT * FROM Tasks")
