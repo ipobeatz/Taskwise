@@ -7,7 +7,6 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import androidx.paging.cachedIn
 import com.example.taskwise.data.model.Task
 import com.example.taskwise.data.repository.CompletedTaskRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -21,6 +20,7 @@ class CompletedTaskViewModel @Inject constructor(application: Application) :
 
     private val repository: CompletedTaskRepository = CompletedTaskRepository(application)
     val getAllCompletedTasks: LiveData<List<Task>> = repository.getAllCompletedTasks()
+
 
     fun insertCompletedTask(task: Task) {
         viewModelScope.launch {

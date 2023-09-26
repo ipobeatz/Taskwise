@@ -9,10 +9,9 @@
 
     <RelativeLayout
         android:id="@+id/noTask"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="#DC6859"
-        android:padding="7dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#2E2C2C"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,7 +36,7 @@
             android:fontFamily="@font/poppins_semibold"
             android:padding="2dp"
             android:text="@string/no_task_to_do"
-            android:textColor="@color/black"
+            android:textColor="@color/background"
             android:textSize="24sp" />
 
         <TextView
@@ -47,7 +46,7 @@
             android:layout_centerHorizontal="true"
             android:fontFamily="@font/poppins_light"
             android:text="@string/tapToAddTask"
-            android:textColor="@color/black"
+            android:textColor="@color/background"
             android:textSize="14sp" />
 
 

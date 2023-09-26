@@ -5,8 +5,8 @@
             <item>
                 <shape android:shape="oval">
                     <corners android:radius="1dp" />
-                    <stroke android:width="1dp" android:color="#FFFFFF" />
-                    <gradient android:angle="270" android:centerColor="#DA3C0B" android:endColor="#D5722F" android:startColor="#DA8895" />
+                    <stroke android:width="1dp" android:color="#89FD03" />
+                    <gradient android:angle="270" android:centerColor="#33CF39" android:endColor="#03AE0B" android:startColor="#0FAF43" />
                     <size android:width="30dp" android:height="30dp" />
                 </shape>
             </item>

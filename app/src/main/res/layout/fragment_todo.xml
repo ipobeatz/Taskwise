@@ -1,17 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:background="#2E2C2C"
     tools:context=".ui.todoFragment.ToDoFragment">
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/todoRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="7dp"
+        android:layout_marginTop="5dp"
+        android:padding="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         tools:listitem="@layout/task_item" />
+
+
 
     <RelativeLayout
         android:id="@+id/noTaskLayout"
@@ -19,11 +26,13 @@
         android:layout_height="match_parent"
         android:visibility="gone">
 
+
         <include
             layout="@layout/no_task_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="7dp" />
+
     </RelativeLayout>
 
 

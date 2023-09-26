@@ -3,15 +3,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:background="#2E2C2C"
     tools:context=".ui.completedFragment.CompletedFragment">
 
+
+    <RelativeLayout
+        android:id="@+id/noTaskLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+    </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/completedRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="7dp"
+        android:layout_marginTop="5dp"
+        android:padding="12dp"
         tools:listitem="@layout/completed_task_item" />
 
 

@@ -6,7 +6,6 @@
     android:minWidth="500dp"
     android:minHeight="380dp"
     android:layout_gravity="center"
-    android:padding="7dp"
     >
 
     <RelativeLayout
@@ -30,11 +29,12 @@
             android:textSize="18sp"
             tools:targetApi="p" />
 
+
         <EditText
 
             android:id="@+id/titleOfTaskEditText"
-            android:layout_width="303dp"
-            android:layout_height="56dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_below="@id/AddTaskTextView"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="16dp"
@@ -49,9 +49,10 @@
             android:layout_width="140dp"
             android:layout_height="56dp"
             android:layout_below="@id/titleOfTaskEditText"
-            android:layout_marginStart="0dp"
+            android:layout_alignStart="@+id/titleOfTaskEditText"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="10dp"
             android:layout_toStartOf="@+id/timeOfTaskEditText"
             android:background="@drawable/edittext_shape"
             android:clickable="false"
@@ -67,7 +68,7 @@
             android:layout_below="@id/titleOfTaskEditText"
             android:layout_alignEnd="@+id/titleOfTaskEditText"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="0dp"
+            android:layout_marginEnd="1dp"
             android:background="@drawable/edittext_shape"
             android:clickable="false"
             android:focusable="false"
@@ -87,11 +88,13 @@
 
         <TextView
             android:id="@+id/setPriorityTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="284dp"
+            android:layout_height="26dp"
             android:layout_below="@id/line_1"
             android:layout_alignStart="@+id/dateOfTaskEditText"
+            android:layout_alignRight="@+id/timeOfTaskEditText"
             android:layout_marginStart="0dp"
+
             android:fontFamily="@font/poppins_semibold"
             android:text="@string/set_priority"
             android:textColor="@color/background"

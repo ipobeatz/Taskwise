@@ -17,35 +17,27 @@ import javax.inject.Inject
 class TodoViewModel @Inject constructor(application: Application) : AndroidViewModel(application) {
 
     private val repository: TaskRepository = TaskRepository(application)
-
-
-    private val _inserted = MutableLiveData<Boolean>()
-    val inserted: MutableLiveData<Boolean>
-        get() = _inserted
-
-
-    fun getAllTasks() = liveData(Dispatchers.IO) {
-        emit(repository.getAllTasks())
-    }
+    val getAllTasks: LiveData<List<com.example.taskwise.data.model.Task>> = repository.getAllTasks()
 
     fun insertTask(task: Task) {
         viewModelScope.launch {
             repository.insertTask(task)
-            getAllTasks()
-            _inserted.value = true
         }
     }
 
-    fun deleteTask(task: Task) {
+    fun deleteTask(task: com.example.taskwise.data.model.Task) {
         viewModelScope.launch {
             repository.deleteTask(task)
-            getAllTasks()
         }
     }
 
     fun deleteAllTasks() {
         viewModelScope.launch {
             repository.deleteAllTasks()
+
         }
+
     }
+
+
 }

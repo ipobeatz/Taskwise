@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.taskwise.data.model.Task
 import com.example.taskwise.databinding.FragmentCompletedBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -19,10 +20,12 @@ class CompletedFragment : Fragment() {
 
     private var _binding: FragmentCompletedBinding? = null
     private val binding get() = _binding!!
+    private val completedTasks = mutableListOf<Task>()
 
     @Inject
     lateinit var completedTaskAdapter: CompletedTaskAdapter
     private val completedTaskViewModel: CompletedTaskViewModel by viewModels()
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,13 +42,25 @@ class CompletedFragment : Fragment() {
 
         setUpRecyclerView()
         observeToLiveData()
+
+
+
+/*
+        viewLifecycleOwner.lifecycleScope.launch {
+            completedTaskViewModel.tasks.collectLatest { pagingData ->
+                completedTaskAdapter.submitData(pagingData)
+            }
+        }
+*/
     }
 
+
+
     private fun setUpRecyclerView() {
-        binding.completedRecyclerView.apply {
-            layoutManager = LinearLayoutManager(context)
-            adapter = completedTaskAdapter
-        }
+        val recyclerView = binding.completedRecyclerView
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        recyclerView.adapter = completedTaskAdapter
+
     }
 
     private fun observeToLiveData() {

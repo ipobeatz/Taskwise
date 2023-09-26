@@ -16,16 +16,13 @@ import javax.inject.Inject
 class TodoAdapter @Inject constructor() : RecyclerView.Adapter<TodoAdapter.TodoViewHolder>(),
     OnCheckBoxClickListener {
     private var onCheckBoxClickListener: OnCheckBoxClickListener? = null
-
     fun setOnCheckBoxClickListener(listener: OnCheckBoxClickListener) {
         onCheckBoxClickListener = listener
     }
 
-
     inner class TodoViewHolder(val binding: TaskItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         init {
-
             binding.checkbox.setOnClickListener {
                 val position = bindingAdapterPosition
                 if (position != RecyclerView.NO_POSITION) {
@@ -34,7 +31,6 @@ class TodoAdapter @Inject constructor() : RecyclerView.Adapter<TodoAdapter.TodoV
                 }
             }
         }
-
     }
 
     private val diffCallback = object : DiffUtil.ItemCallback<Task>() {
@@ -46,31 +42,24 @@ class TodoAdapter @Inject constructor() : RecyclerView.Adapter<TodoAdapter.TodoV
             return oldItem == newItem
         }
     }
-
     var differ = AsyncListDiffer(this, diffCallback)
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodoAdapter.TodoViewHolder {
         val view = TaskItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return TodoViewHolder(view)
-
     }
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: TodoAdapter.TodoViewHolder, position: Int) {
-
         val currentItem = differ.currentList[position]
-
         holder.binding.taskTitle.text = currentItem.title
         holder.binding.timeTextView.text = currentItem.time
         holder.binding.dateOfDayTextView.text = currentItem.date
         if (!currentItem.isReminder)
             holder.binding.reminderView.visibility = View.GONE
-
         if (currentItem.priority == Priority.MEDIUM)
             holder.binding.taskPriority.setBackgroundResource(R.drawable.priority_medium)
         else if (currentItem.priority == Priority.HIGH)
             holder.binding.taskPriority.setBackgroundResource(R.drawable.priority_high)
-
         holder.binding.checkbox.setOnClickListener {
             val position = holder.bindingAdapterPosition
             if (position != RecyclerView.NO_POSITION && position < differ.currentList.size) {
@@ -89,11 +78,8 @@ class TodoAdapter @Inject constructor() : RecyclerView.Adapter<TodoAdapter.TodoV
     }
 
     override fun OnCheckBoxClicked(task: Task, position: Int) {
-
         // Tıklanan öğeyle ilgili işlemleri gerçekleştirin.
         // Örneğin, öğeyi listeden kaldırabilir veya diğer güncellemeleri yapabilirsiniz.
-
-
     }
 
     companion object {

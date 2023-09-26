@@ -12,7 +12,7 @@ class TaskRepository(application: Application) {
         database.getTaskDao()
     }
 
-    suspend fun getAllTasks() = dao.getAllTasks()
+    fun getAllTasks() = dao.getAllTasks()
 
     suspend fun insertTask(task: Task) = dao.insertTask(task)
 

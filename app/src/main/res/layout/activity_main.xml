@@ -25,7 +25,7 @@
             android:paddingTop="7dp"
             android:text="@string/todo_list"
             android:textColor="@color/background"
-            android:textSize="26sp"
+            android:textSize="22sp"
             android:textStyle="bold" />
 
         <TextView
@@ -40,7 +40,7 @@
             android:paddingBottom="7dp"
             android:text="@string/dateOfDay"
             android:textColor="@color/background"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/nav_host_fragment"
@@ -49,7 +49,10 @@
             android:layout_height="match_parent"
             android:layout_below="@id/dateOfDayTextView"
             app:defaultNavHost="true"
-            app:navGraph="@navigation/nav_graph" />
+            app:navGraph="@navigation/nav_graph"
+            />
+
+
 
         <Button
             android:id="@+id/addTaskBtn"

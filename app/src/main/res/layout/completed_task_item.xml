@@ -15,8 +15,8 @@
 
         <RelativeLayout
             android:id="@+id/oneline"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="46dp"
             android:orientation="horizontal">
 
             <View
@@ -58,8 +58,8 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="392dp"
+            android:layout_height="61dp"
             android:layout_below="@id/oneline"
             android:orientation="vertical">
 
