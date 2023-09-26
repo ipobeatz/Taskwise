@@ -26,7 +26,7 @@ object DateChecker {
             // Seçilen tarih geçmişte
             val diff: Long = currentDate.time - selectedDate.time
             val days = diff / (24 * 60 * 60 * 1000L) // Bir günü temsil eden milisaniye cinsinden değer
-            Log.d("DateChecker", "Selected date is in the past, $days days ago.")
+            Log.d("DateChecker", "Selected date is in the past, $days days agos.")
             return days.toInt()
         } else {
             // Seçilen tarih gelecekte
