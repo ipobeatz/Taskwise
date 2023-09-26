@@ -25,7 +25,7 @@ object TimeChecker {
             val currentTime = LocalTime.now()
             var timeTo: LocalTime? = null
 
-            // Farklı saat biçimlerini deneyin
+            // Farklı saat biçimlerini deneyinn
             for (format in hourFormats) {
                 try {
                     timeTo = LocalTime.parse(time, format)
